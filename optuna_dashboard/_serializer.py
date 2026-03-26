@@ -229,6 +229,8 @@ def serialize_frozen_trial(
         )
     trial_system_attrs: dict[str, Any] = getattr(trial, "_system_attrs", {})
     fixed_params = trial_system_attrs.get("fixed_params", {})
+if not isinstance(fixed_params, dict):
+    fixed_params = {}
     serialized = {
         "trial_id": trial._trial_id,
         "study_id": study_id,
